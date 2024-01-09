@@ -1,0 +1,13 @@
+.about {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.about-card {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
