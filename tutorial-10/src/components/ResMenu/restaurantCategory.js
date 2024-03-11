@@ -1,0 +1,59 @@
+import { useState } from "react";
+import ItemList from "./ItemList";
+const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
+  const category = data?.card?.card;
+  const [showItem, setShowItem] = useState(false);
+  const handleClick = () => {
+    setShowIndex();
+    setShowItem(showItems);
+  };
+
+  return (
+    <div id="accordion-open" data-accordion="close" className="w-2/4">
+    <h2 id="accordion-open-heading-1" onClick={handleClick}>
+      <button
+        type="button"
+        className="flex flex-row items-center justify-between w-full p-5 font-medium rtl:text-right text-gray-500 border border-b-1 shadow-md border-gray-200 rounded-md dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 gap-3"
+        data-accordion-target="#accordion-open-body-1"
+        aria-expanded="true"
+        aria-controls="accordion-open-body-1"
+      >
+        <span className="flex items-center">
+          {category?.title} ({category?.itemCards.length})
+        </span>
+        <svg
+          data-accordion-icon
+          className="w-3 h-3 rotate-180 shrink-0"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 10 6"
+        >
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M9 5 5 1 1 5"
+          />
+        </svg>
+      </button>
+    </h2>
+
+    <div
+      id="accordion-open-body-1"
+      aria-labelledby="accordion-open-heading-1"
+    >
+      {showItems && (
+        <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+          {category.itemCards.map((item) => (
+            <ItemList item={item} key={item?.card?.info?.id} />
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+  );
+};
+
+export default RestaurantCategory;
