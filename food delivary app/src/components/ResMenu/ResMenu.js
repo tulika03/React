@@ -3,9 +3,6 @@ import ShimmerUI from "../content/shimmer";
 import { useParams } from "react-router-dom";
 import RestaurantCategory from "./restaurantCategory";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import Message from "../Toast/message";
-import StickyNav from "../header/stickyNav";
 const ResMenu = () => {
   const { resId } = useParams();
   const resData = useRestaurantMenu(resId);
@@ -32,7 +29,6 @@ const ResMenu = () => {
           <div>
             <span>{resData?.cards[0]?.card?.card?.info?.name}</span>
           </div>
-          sdsd
           <div></div>
         </div>
       </div>
@@ -41,7 +37,8 @@ const ResMenu = () => {
           key={category?.card?.card?.title}
           data={category}
           showItems={index === showIndex}
-          setShowIndex={() => setShowIndex(index)}
+          setShowIndex={() => {console.log("check index value: ", index)
+            return setShowIndex(index)}}
         />
       ))}
     </div>

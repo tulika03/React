@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { setAlert } from "../../../store/slices/toastSlice";
 const Message = (props) => {
-  console.log("message props: ", props);
   const dispatch = useDispatch();
   const handleCloseButton = () => {
     dispatch(setAlert(false));

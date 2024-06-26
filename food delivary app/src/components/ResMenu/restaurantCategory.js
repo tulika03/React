@@ -2,10 +2,10 @@ import { useState } from "react";
 import ItemList from "./ItemList";
 const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
   const category = data?.card?.card;
-  const [showItem, setShowItem] = useState(false);
+  const [showData, setShowData] = useState(false);
   const handleClick = () => {
     setShowIndex();
-    setShowItem(showItems);
+    setShowData(!showData);
   };
 
   return (
@@ -44,7 +44,7 @@ const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
       id="accordion-open-body-1"
       aria-labelledby="accordion-open-heading-1"
     >
-      {showItems && (
+      {showItems && showData &&(
         <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
           {category.itemCards.map((item) => (
             <ItemList item={item} key={item?.card?.info?.id} />

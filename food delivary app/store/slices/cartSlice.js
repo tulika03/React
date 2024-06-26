@@ -10,10 +10,22 @@ const cartSlice= createSlice({
         // mutating the state (directly modifying the state)
         // we can consider reducer as an api to communicate with redux store
         addItem: (state, action) => {
-            state.items.push(action.payload);
+
+            const itemIndex = state.items.findIndex(e => e.id == action.payload.id);
+            if(itemIndex < 0)
+                state.items.push(action.payload);
+            else
+                state.items[itemIndex].quantity = action.payload.quantity + 1;
         },
         removeItem: (state, action) => {
-            delete item[action.payload];
+            console.log("check item to be deleted id: ", action.payload)
+            // delete item[action.payload];
+            if(action.payload.quantity == 1)
+                state.items = state.items.filter(item => item.id != action.payload.id)
+            else {
+                const itemIndex = state.items.findIndex(e => e.id == action.payload.id);
+                state.items[itemIndex].quantity = action.payload.quantity - 1;
+            }
         },
         clearCart: (state) => {
             state.items.length = 0;

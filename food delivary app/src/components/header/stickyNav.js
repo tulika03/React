@@ -8,7 +8,6 @@ const StickyNav = () => {
   let nav = "";
 
   const cartData = useSelector((store) => {
-    console.log("toast store selector: ", store.cart);
     return store.cart;
   });
 

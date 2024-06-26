@@ -8,7 +8,6 @@ const toastSlice = createSlice({
     },
     reducers: {
         setAlert: (state, action) => {
-            console.log("setAlert slice(): ", action.payload)
             state.alert = action.payload;
         },
         setErrorMessage: (state, action) => {
