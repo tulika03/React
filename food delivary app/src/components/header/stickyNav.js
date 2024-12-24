@@ -41,7 +41,7 @@ const StickyNav = () => {
     <div className="fixed bottom-0 z-50 w-full -translate-x-1/2 left-1/2 p-2">
       <div>
         <div
-          className="px-16 grid max-w-xs grid-cols-1 gap-1 p-1 mx-auto my-2 rounded-xl dark:bg-gray-600 mt-10"
+          className="px-16 grid max-w-xs grid-cols-1 gap-1 p-1 mx-auto my-2 rounded-xl dark:bg-gray-600 mt-1"
           role="group"
         >
           <button

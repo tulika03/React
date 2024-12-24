@@ -2,14 +2,15 @@ import { useState } from "react";
 import ItemList from "./ItemList";
 const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
   const category = data?.card?.card;
-  const [showData, setShowData] = useState(false);
+ 
+  const [showData, setShowData] = useState(true);
   const handleClick = () => {
     setShowIndex();
     setShowData(!showData);
   };
 
   return (
-    <div id="accordion-open" data-accordion="close" className="w-2/4">
+    <div id="accordion-open" data-accordion="close" className="w-full">
     <h2 id="accordion-open-heading-1" onClick={handleClick}>
       <button
         type="button"
@@ -18,7 +19,7 @@ const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
         aria-expanded="true"
         aria-controls="accordion-open-body-1"
       >
-        <span className="flex items-center">
+        <span className="flex items-center font-bold text-black">
           {category?.title} ({category?.itemCards.length})
         </span>
         <svg
@@ -40,18 +41,14 @@ const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
       </button>
     </h2>
 
-    <div
-      id="accordion-open-body-1"
-      aria-labelledby="accordion-open-heading-1"
-    >
-      {showItems && showData &&(
-        <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-          {category.itemCards.map((item) => (
-            <ItemList item={item} key={item?.card?.info?.id} />
-          ))}
+    <div id="accordion-open-body-1" aria-labelledby="accordion-open-heading-1">
+      {showItems && showData &&(<div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
+          {category.itemCards.map((item) => ( <ItemList item={item} key={item?.card?.info?.id} /> ))}
+          
         </div>
       )}
     </div>
+    
   </div>
   );
 };

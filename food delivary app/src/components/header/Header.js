@@ -15,7 +15,7 @@ const Header = () => {
   });
 
   return (
-      <header className="flex justify-between p-6 shadow-md sticky fixed">
+      <header className="flex justify-around py-4 shadow-lg sticky">
         <div className="logo-container">
           <img className="logo h-16 w-16" alt="logo" src={LOGO_URL}></img>
         </div>

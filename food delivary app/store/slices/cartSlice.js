@@ -12,10 +12,16 @@ const cartSlice= createSlice({
         addItem: (state, action) => {
 
             const itemIndex = state.items.findIndex(e => e.id == action.payload.id);
-            if(itemIndex < 0)
+            if(itemIndex < 0) {
+                action.payload.quantity = 1;
+                action.payload.totalPrice = action.payload.price / 100;
                 state.items.push(action.payload);
-            else
-                state.items[itemIndex].quantity = action.payload.quantity + 1;
+            }
+            else {
+                state.items[itemIndex].quantity = state.items[itemIndex].quantity + 1;
+                state.items[itemIndex].totalPrice = state.items[itemIndex].quantity * (state.items[itemIndex].price / 100)
+            }
+                
         },
         removeItem: (state, action) => {
             console.log("check item to be deleted id: ", action.payload)
@@ -24,7 +30,8 @@ const cartSlice= createSlice({
                 state.items = state.items.filter(item => item.id != action.payload.id)
             else {
                 const itemIndex = state.items.findIndex(e => e.id == action.payload.id);
-                state.items[itemIndex].quantity = action.payload.quantity - 1;
+                state.items[itemIndex].quantity = state.items[itemIndex].quantity - 1;
+                state.items[itemIndex].totalPrice = state.items[itemIndex].quantity * (state.items[itemIndex].price / 100)
             }
         },
         clearCart: (state) => {

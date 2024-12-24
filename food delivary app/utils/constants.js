@@ -4,3 +4,5 @@ export const GITHUB_URL = "https://api.github.com/"
 export const IMAGE_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
 export const MENU_URL= 
 "https://proxy.cors.sh/https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.629735&lng=77.2390784&restaurantId="
+
+

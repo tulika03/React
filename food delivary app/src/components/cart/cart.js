@@ -86,9 +86,9 @@ const Cart = () => {
                   <p className="text-sm text-gray-500 truncate dark:text-gray-400">
                     {item.description}
                   </p>
-                  <p>
-                  <div className="left-1/4 top-3/4 pt-3 pl-3 button-box items-stretch .flex-no-wrap">
-                    <button
+                  <div className="button-box flex justify-between left-1/4 top-3/4 pt-3 pl-1 flex-row">
+                  <div>
+                  <button
                       className="z-10 p-2  border-2  text-sm bg-white text-black-400 .text-6xl disabled:bg-gray-400"
                       onClick={() => item.quantity > 0 && handleRemoveItem(item)}
                     >
@@ -103,9 +103,12 @@ const Cart = () => {
                     >
                       +
                     </button>
+                  </div>
+  
+                   <div className="self-center">₹{item.totalPrice}</div> 
                 </div>
-                  {/* ₹{item.price ? item.price / 100 : item.defaultPrice / 100} */}
-                  </p>
+
+
                 </div>
               </div>
             </li>

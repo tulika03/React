@@ -17,6 +17,7 @@ import UserContext from "../context/UserContext";
 import {Provider} from "react-redux";
 import appStore from "../store/appStore";
 import StickyNav from "./components/header/stickyNav";
+import SearchMenu from "./components/ResMenu/searchMenu";
 const About = lazy(() => import("./components/about/about"));
 
 const AppComponent = () => {
@@ -24,7 +25,7 @@ const AppComponent = () => {
   const [userName, setUsername] = useState("")
     useEffect(() => {
       const data = {
-        name: "Tulika"
+        name: "User"
       };
 
       setUsername(data.name);
@@ -33,8 +34,8 @@ const AppComponent = () => {
     
 
   const onlineStatus = useOnlineStatus();
-  if(loading)
-    return <Loading />
+  // if(loading)
+  //   return <ShimmerUI />
 
   if(onlineStatus === false)
     return <h1>Looks like you are offline. Please check your internet connection</h1>
@@ -85,6 +86,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:resId",
         element: <ResMenu />
+      },
+      {
+        path: "/search",
+        element: <SearchMenu />
       },
       {
         path: "/login",
